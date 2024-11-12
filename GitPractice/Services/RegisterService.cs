@@ -13,8 +13,15 @@ namespace GitPractice.Services
                 return false;
             }
 
+            InsertAccountToDB(model);
             return true;
         }
+        
+        public bool InsertAccountToDB(UserModel model)
+        {
+            return true;
+        }
+
 
     }
 }
