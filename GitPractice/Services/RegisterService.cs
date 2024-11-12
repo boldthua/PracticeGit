@@ -21,6 +21,12 @@ namespace GitPractice.Services
         {
             return true;
         }
+        
+        public bool SendEmail(string content)
+        {   
+            Console.WriteLine("發送驗證信");
+            return true;
+        }
 
 
     }

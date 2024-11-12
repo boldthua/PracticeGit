@@ -9,5 +9,14 @@ namespace GitPractice.Models
         public String Password { get; set; }
         public String Address { get; set; }
         public String Phone { get; set; }
+
+        public UserModel(string name, string account, string password, string address, string phone)
+        {
+            Name = name;
+            Account = account;
+            Password = password;
+            Address = address;
+            Phone = phone;
+        }
     }
 }
