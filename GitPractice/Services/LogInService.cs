@@ -10,13 +10,17 @@ namespace GitPractice.Services
 {
     internal class LogInService
     {
-        public bool LogIn(UserModel model) 
+        public (bool, string) LogIn(UserModel model) 
         {
             if (model.Equals(model))
             {
-                return true;
+                return (true, "登入成功");
             }
-            return false;            
+            else if (model.Name == "" || model.Password == "") 
+            {
+                return (false, "輸入欄位不得為空白");
+            }
+            return (false, "查無此帳號！");            
         }
     }
 }
