@@ -22,5 +22,10 @@ namespace GitPractice.Services
             }
             return (false, "查無此帳號！");            
         }
+
+        public void BugFix(UserModel model)
+        {
+            // 我修好啦！
+        }
     }
 }
