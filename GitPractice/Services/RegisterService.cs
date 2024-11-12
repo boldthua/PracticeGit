@@ -14,6 +14,8 @@ namespace GitPractice.Services
             }
 
             InsertAccountToDB(model);
+            SendEmail("用戶代號：" + model.Account + "");
+            
             return true;
         }
         
@@ -24,7 +26,7 @@ namespace GitPractice.Services
         
         public bool SendEmail(string content)
         {   
-            Console.WriteLine("發送驗證信");
+            Console.WriteLine("發送驗證信:" + content);
             return true;
         }
 
