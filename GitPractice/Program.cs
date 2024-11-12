@@ -12,9 +12,27 @@ namespace GitPractice
     {
         static void Main(string[] args)
         {
-            UserModel registerModel = new UserModel(Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine());
+
+            #region 註冊模組
+            Console.WriteLine("歡迎使用者登入我們的GIT系統，請先輸入註冊訊息，以利後續登入做使用");
+            while (true)
+            {
+                UserModel registerModel = new UserModel(Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine());
+                RegisterService service = new RegisterService();
+                bool isSuccess = service.Regist(registerModel);
+                if (isSuccess)
+                {
+                    Console.WriteLine("註冊成功！");
+                    break;
+                }
+                Console.WriteLine("註冊失敗！請重新註冊！");
+            }
+            #endregion
+
+            #region 登入模組
+            UserModel loginModel = new UserModel(Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine());
             LogInService log_service = new LogInService();
-            var loginInfo = log_service.LogIn(registerModel);
+            var loginInfo = log_service.LogIn(loginModel);
 
             if (loginInfo.Item1)
             {
@@ -24,21 +42,7 @@ namespace GitPractice
             {
                 Console.WriteLine("登入失敗！" + loginInfo.Item2);
             }
-
-
-            RegisterService service = new RegisterService();
-            bool isSuccess = service.Regist(registerModel);
-
-            if (isSuccess)
-            {
-                Console.WriteLine("註冊成功！");
-            }
-            else
-            {
-                Console.WriteLine("註冊失敗！");
-            }
-
-
+            #endregion
         }
     }
 }
