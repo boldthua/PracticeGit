@@ -12,7 +12,20 @@ namespace GitPractice
     {
         static void Main(string[] args)
         {
-            UserModel registerModel = new UserModel( Console.ReadLine(),  Console.ReadLine(),  Console.ReadLine(),  Console.ReadLine(), Console.ReadLine());
+            UserModel registerModel = new UserModel(Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine());
+            LogInService log_service = new LogInService();
+            var loginInfo = log_service.LogIn(registerModel);
+
+            if (loginInfo.Item1)
+            {
+                Console.WriteLine("登入成功！" + loginInfo.Item2);
+            }
+            else
+            {
+                Console.WriteLine("登入失敗！" + loginInfo.Item2);
+            }
+
+
             RegisterService service = new RegisterService();
             bool isSuccess = service.Regist(registerModel);
 
@@ -24,6 +37,8 @@ namespace GitPractice
             {
                 Console.WriteLine("註冊失敗！");
             }
+
+
         }
     }
 }
